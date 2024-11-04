@@ -20,8 +20,8 @@
                         <div class="content-group" attrs="{'invisible': [('neverbounce', '=', False)]}"
                              id="msg_neverbounce">
                             <div class="mt16 row">
-                                <label for="recaptcha_public_key" class="col-3 o_light_label"/>
-                                <field name="recaptcha_public_key"/>
+                                <label for="neverbounce_api_key" class="col-3 o_light_label"/>
+                                <field name="neverbounce_api_key"/>
                             </div>
                             <div>
                                 <a href="https://app.neverbounce.com/apps" class="oe_link" target="_blank">
