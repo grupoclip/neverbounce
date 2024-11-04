@@ -1,4 +1,3 @@
-
 # Partner Email Verification with NeverBounce Integration
 
 This Odoo 16 module integrates with the NeverBounce email verification service to validate customer email addresses directly from the Odoo platform. With this module, users can check the validity of emails, helping ensure accuracy and reduce bounce rates. The module stores verification details to avoid redundant API calls for previously checked addresses.
@@ -8,7 +7,7 @@ This Odoo 16 module integrates with the NeverBounce email verification service t
 - **Email Verification**: Adds a "Verify Email" button on the `res.partner` form view to validate an email address through the NeverBounce API.
 - **Cache Verified Emails**: Stores verified emails with their status and additional details in an internal model to reduce API calls.
 - **Automatic Field Updates**: The module adds a field in `res.partner` to indicate whether the email has been verified. If the email is verified, the "Verify Email" button is hidden.
-- **Configurable API Key**: The NeverBounce API key can be managed directly from Odoo’s settings for easy configuration and updates.
+- **Configurable API Key**: The NeverBounce API key can be managed directly from Odoo's settings for easy configuration and updates.
 
 ## Technical Details
 
