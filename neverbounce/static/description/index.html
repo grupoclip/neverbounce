@@ -1,0 +1,52 @@
+<h1>Partner Email Verification with NeverBounce Integration</h1>
+
+<p>This Odoo 16 module integrates with the NeverBounce email verification service to validate customer email addresses directly from the Odoo platform. With this module, users can check the validity of emails, helping ensure accuracy and reduce bounce rates. The module stores verification details to avoid redundant API calls for previously checked addresses.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><strong>Email Verification</strong>: Adds a "Verify Email" button on the <code>res.partner</code> form view to validate an email address through the NeverBounce API.</li>
+<li><strong>Cache Verified Emails</strong>: Stores verified emails with their status and additional details in an internal model to reduce API calls.</li>
+<li><strong>Automatic Field Updates</strong>: The module adds a field in <code>res.partner</code> to indicate whether the email has been verified. If the email is verified, the "Verify Email" button is hidden.</li>
+<li><strong>Configurable API Key</strong>: The NeverBounce API key can be managed directly from Odoo’s settings for easy configuration and updates.</li>
+</ul>
+
+<h2>Technical Details</h2>
+
+<ol>
+<li><strong>Verification Status Storage</strong>: Creates a new model, <code>verified.email</code>, which stores:
+<ul>
+<li>Email address</li>
+<li>Verification status (valid, invalid, or unknown)</li>
+<li>Verification flags (e.g., DNS checks)</li>
+<li>Suggested correction, retry token, and execution time from the API response</li>
+</ul></li>
+<li><strong>NeverBounce API Key Configuration</strong>: The API key is configurable in <code>Settings</code> under a dedicated section, allowing easy updates without code changes.</li>
+</ol>
+
+<h2>Installation</h2>
+
+<ol>
+<li>Place the module folder (<code>partner_email_verification</code>) into your Odoo custom addons directory.</li>
+<li>Update the module list and install the module from the Apps menu.</li>
+<li>Configure the NeverBounce API key in <strong>Settings &gt; General Settings &gt; NeverBounce API Integration</strong>.</li>
+</ol>
+
+<h2>Usage</h2>
+
+<ol>
+<li>Go to <strong>Contacts</strong> and open any contact form.</li>
+<li>If the email has not been verified, click the "Verify Email" button.</li>
+<li>The email verification status and other details will be saved and can be referenced for future verification attempts.</li>
+</ol>
+
+<h2>Dependencies</h2>
+
+<ul>
+<li>Odoo 16</li>
+<li>An active NeverBounce API account and key</li>
+</ul>
+
+<h2>License</h2>
+
+<p>This module is open for customization and distribution as per the terms specified in the license file.</p>
