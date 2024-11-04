@@ -11,7 +11,7 @@
                     <button name="verify_email" type="object" string="Verify Email" class="oe_highlight"/>
                 </header>
             </sheet>
-            <field name="is_email_verified" position="after">
+            <field name="email" position="after">
                 <field name="is_email_verified" readonly="1"/>
             </field>
         </field>
