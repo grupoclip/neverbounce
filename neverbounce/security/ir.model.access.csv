@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_verified_mail_user,access.verified.mail.user,base.model_verified_email,base.group_user,1,1,1,0
-access_verified_mail_system,access.verified.mail.system,base.model_verified_email,base.group_system,1,1,1,1
+access_verified_mail_user,access.verified.mail.user,model_verified_email,base.group_user,1,1,1,0
+access_verified_mail_system,access.verified.mail.system,model_verified_email,base.group_system,1,1,1,1
