@@ -1,5 +1,5 @@
 {
-    'name': 'Partner Email Verification',
+    'name': 'NeverBounce - Partner Email Verification',
     'summary': """
        Conexión con impresoras punto matriz/Forma Libre
    """,
