@@ -20,6 +20,7 @@
         'views/res_partner_view.xml',
         'views/res_config_settings_view.xml',
     ],
+    "images": ["static/description/banner.png"],
     "application": True,
     "installable": True,
 
