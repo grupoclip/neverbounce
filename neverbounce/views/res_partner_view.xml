@@ -5,10 +5,11 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <header>
-                <button name="verify_email" type="object" string="Verify Email" class="oe_highlight"
-                        attrs="{'invisible': [('is_email_verified', '=', True)]}"/>
-            </header>
+            <sheet position="before">
+                <header attrs="{'invisible': [('is_email_verified', '=', True)]}">
+                    <button name="verify_email" type="object" string="Verify Email" class="oe_highlight"/>
+                </header>
+            </sheet>
             <field name="is_email_verified" position="after">
                 <field name="is_email_verified" readonly="1"/>
             </field>
