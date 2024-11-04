@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_config_settings_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.inherit.partner_email_verification</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.view_res_config_settings"/>
+        <field name="arch" type="xml">
+            <div id="settings" position="inside">
+                <div class="app_settings_block" data-string="Email Verification Settings">
+                    <h2>NeverBounce API Integration</h2>
+                    <div class="o_setting_right_pane">
+                        <label for="neverbounce_api_key"/>
+                        <field name="neverbounce_api_key" placeholder="Enter your NeverBounce API Key here"/>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>
