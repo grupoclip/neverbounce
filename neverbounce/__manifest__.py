@@ -13,7 +13,7 @@
    """,
     "author": "Victor Serrano",
     "website": "https://victor.lat",
-    'category': 'Accounting/Accounting',
+    'category': 'Productivity',
     'version': '16.0.0.1',
     'depends': ['base', 'base_setup'],
     'data': [
