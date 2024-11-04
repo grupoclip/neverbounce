@@ -1,20 +1,20 @@
 {
     'name': 'NeverBounce - Partner Email Verification',
     'summary': """
-       Conexión con impresoras punto matriz/Forma Libre
+       Partner Email Verification for Odoo integrates with NeverBounce to streamline email validation, helping businesses maintain clean, accurate customer data. With an easy-to-use verification button and configurable settings, this module reduces email bounce rates and enhances communication reliability by verifying customer emails directly in Odoo. Ideal for businesses seeking to improve data integrity and email deliverability.
    """,
-
     'description': """
-       - Permite la conexión con impresoras punto matriz.
-       - Permite la impresión de facturas.
-       - Permite la division de facturas basado en el limite de lineas que permite una factura .
-       - Permite la auto publicación de facturas.
+    •	Email Verification Button: Verify customer emails directly on the res.partner form.
+	•	NeverBounce Integration: Connects with NeverBounce API for real-time email validation.
+	•	Cache Verified Emails: Saves verified email records to reduce redundant checks.
+	•	Email Status Indicator: Shows email verification status in res.partner.
+	•	Configurable API Key: Easily set the NeverBounce API key in Odoo settings.
+	•	Bounce Rate Reduction: Helps maintain a clean, accurate customer email list.
    """,
-    "author": "Konix C.A",
-    "company": "Grupo Clip",
+    "author": "Victor Serrano",
     "website": "https://victor.lat",
     'category': 'Accounting/Accounting',
-    'version': '16.0.0.1',
+    'version': '15.0.0.1',
     'depends': ['base'],
     'data': [
         'views/res_partner_view.xml',
