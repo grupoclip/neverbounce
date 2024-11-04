@@ -1,13 +1,15 @@
 import requests
 from odoo import fields, models
 from odoo.exceptions import UserError
+
 API_BASEURL = 'https://api.neverbounce.com/'
 API_VERSION = 'v4.2'
 
-API_URL = f'{API_BASEURL}{API_VERSION}/'
+API_URL = f'{API_BASEURL}{API_VERSION}'
 
 API_ENDPOINT_SINGLE_CHECK = f'{API_URL}/single/check'
 API_ENDPOINT_ACCOUNT_INFO = f'{API_URL}/account/info'
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -24,7 +26,6 @@ class ResPartner(models.Model):
                 record.is_email_verified = verified_record.verification_status == 'valid'
                 if verified_record.verification_status == 'valid':
                     continue
-
 
             # Retrieve the API key from the configuration
             API_KEY = self.env['ir.config_parameter'].sudo().get_param('partner_email_verification.neverbounce_api_key')
