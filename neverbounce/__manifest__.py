@@ -10,8 +10,7 @@
        - Permite la division de facturas basado en el limite de lineas que permite una factura .
        - Permite la auto publicación de facturas.
    """,
-    "author": "Konix C.A",
-    "company": "Grupo Clip",
+    "author": "Victor Serrano",
     "website": "https://victor.lat",
     'category': 'Accounting/Accounting',
     'version': '16.0.0.1',
