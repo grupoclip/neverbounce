@@ -8,20 +8,24 @@
         <field name="arch" type="xml">
             <div id="integration" position="inside">
                 <div class="col-12 col-lg-6 o_setting_box" id="neverbounce_api_key_setting">
-                                <div class="o_setting_left_pane">
-                                    <field name="neverbounce_api_key"/>
-                                </div>
-                                <div class="o_setting_right_pane">
-                                    <label string="NeverBounce API KEY" for="neverbounce_api_key"/>
-                                    <a href="https://www.neverbounce.com" title="Documentation" class="o_doc_link" target="_blank"/>
-                                    <div class="text-muted">
-                                        NeverBounce API Integration
-                                    </div>
-                                    <div class="content-group" attrs="{'invisible': [('neverbounce_api_key', '=', False)]}" id="msg_neverbounce_api_key">
-                                        <div class="text-warning mt16"><strong>Save</strong> this page and come back here to set up the feature.</div>
-                                    </div>
-                                </div>
+                    <div class="o_setting_left_pane">
+                        <field name="neverbounce_api_key"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label string="NeverBounce API KEY" for="neverbounce_api_key"/>
+                        <a href="https://www.neverbounce.com" title="Documentation" class="o_doc_link" target="_blank"/>
+                        <div class="text-muted">
+                            NeverBounce API Integration
+                        </div>
+                        <div class="content-group" attrs="{'invisible': [('neverbounce_api_key', '=', False)]}"
+                             id="msg_neverbounce_api_key">
+                            <div class="text-warning mt16">
+                                <strong>Save</strong>
+                                this page and come back here to set up the feature.
                             </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </field>
     </record>
