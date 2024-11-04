@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_verified_email_form" model="ir.ui.view">
+        <field name="name">verified.email.form</field>
+        <field name="model">verified.email</field>
+        <field name="arch" type="xml">
+            <form string="Verified Email">
+                <sheet>
+                    <group>
+                        <field name="email" readonly="1"/>
+                        <field name="verification_status" readonly="1"/>
+                        <field name="verification_date" readonly="1"/>
+                        <field name="flags" readonly="1"/>
+                        <field name="suggested_correction" readonly="1"/>
+                        <field name="retry_token" readonly="1"/>
+                        <field name="execution_time" readonly="1"/>
+                        <field name="user_id" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_verified_email_tree" model="ir.ui.view">
+        <field name="name">verified.email.tree</field>
+        <field name="model">verified.email</field>
+        <field name="arch" type="xml">
+            <tree string="Verified Emails">
+                <field name="email"/>
+                <field name="verification_status"/>
+                <field name="verification_date"/>
+                <field name="flags"/>
+                <field name="suggested_correction"/>
+                <field name="retry_token"/>
+                <field name="execution_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_verified_email" action="action_verified_email" name="Verified Emails"
+              parent="contacts.menu_localisation" sequence="10"/>
+
+    <record id="action_verified_email" model="ir.actions.act_window">
+        <field name="name">Verified Emails</field>
+        <field name="res_model">verified.email</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

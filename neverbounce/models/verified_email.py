@@ -15,3 +15,4 @@ class VerifiedEmail(models.Model):
     suggested_correction = fields.Char(string='Suggested Correction')
     retry_token = fields.Char(string='Retry Token')
     execution_time = fields.Integer(string='Execution Time (ms)')
+    user_id = fields.Many2one('res.users', string='User', default=lambda self: self.env.user)

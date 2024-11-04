@@ -14,7 +14,7 @@
     "author": "Victor Serrano",
     "website": "https://victor.lat",
     'category': 'Productivity',
-    'version': '16.0.0.1.1',
+    'version': '16.0.0.1.2',
     'depends': ['base', 'base_setup'],
     'data': [
         'security/ir.model.access.csv',
