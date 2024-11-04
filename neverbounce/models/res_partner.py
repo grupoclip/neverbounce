@@ -1,6 +1,7 @@
 import requests
 from odoo import fields, models
 
+API_ENDPOINT = 'https://api.neverbounce.com/v4/single/check'
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -18,12 +19,12 @@ class ResPartner(models.Model):
                 continue
 
             # Retrieve the API key from the configuration
-            api_key = self.env['ir.config_parameter'].sudo().get_param('partner_email_verification.neverbounce_api_key')
-            if not api_key:
+            API_KEY = self.env['ir.config_parameter'].sudo().get_param('partner_email_verification.neverbounce_api_key')
+            if not API_KEY:
                 raise ValueError("Please configure the NeverBounce API Key in the settings.")
 
             # Call the NeverBounce API
-            url = f'https://api.neverbounce.com/v4/single/check?key={api_key}&email={record.email}'
+            url = f'{API_ENDPOINT}?key={API_KEY}&email={record.email}'
             response = requests.get(url)
 
             if response.status_code == 200:
