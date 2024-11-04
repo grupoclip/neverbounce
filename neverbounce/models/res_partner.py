@@ -1,7 +1,13 @@
 import requests
 from odoo import fields, models
 
-API_ENDPOINT = 'https://api.neverbounce.com/v4/single/check'
+API_BASEURL = 'https://api.neverbounce.com/'
+API_VERSION = 'v4.2'
+
+API_URL = f'{API_BASEURL}{API_VERSION}/'
+
+API_ENDPOINT_SINGLE_CHECK = f'{API_URL}/single/check'
+API_ENDPOINT_ACCOUNT_INFO = f'{API_URL}/account/info'
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -20,12 +26,22 @@ class ResPartner(models.Model):
 
             # Retrieve the API key from the configuration
             API_KEY = self.env['ir.config_parameter'].sudo().get_param('partner_email_verification.neverbounce_api_key')
+            neverbounce = self.env['ir.config_parameter'].sudo().get_param('partner_email_verification.neverbounce')
+            if not neverbounce:
+                raise ValueError("Please enable the NeverBounce Integration in the settings.")
             if not API_KEY:
                 raise ValueError("Please configure the NeverBounce API Key in the settings.")
 
+            auth = requests.get(f'{API_ENDPOINT_ACCOUNT_INFO}?key={API_KEY}')
+            if auth.status_code == 200:
+                auth_data = auth.json()
+                if auth_data.get('status') == 'auth_failure':
+                    raise ValueError("Invalid API Key - Authentication Failure")
+            else:
+                raise ValueError("Invalid API Key - Unknown Error")
+
             # Call the NeverBounce API
-            url = f'{API_ENDPOINT}?key={API_KEY}&email={record.email}'
-            response = requests.get(url)
+            response = requests.get(f'{API_ENDPOINT_SINGLE_CHECK}?key={API_KEY}&email={record.email}')
 
             if response.status_code == 200:
                 data = response.json()
