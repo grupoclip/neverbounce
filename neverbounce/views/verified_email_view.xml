@@ -37,12 +37,13 @@
         </field>
     </record>
 
-    <menuitem id="menu_verified_email" action="action_verified_email" name="Verified Emails"
-              parent="contacts.menu_localisation" sequence="10"/>
+
 
     <record id="action_verified_email" model="ir.actions.act_window">
         <field name="name">Verified Emails</field>
         <field name="res_model">verified.email</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <menuitem id="menu_verified_email" action="action_verified_email" name="Verified Emails"
+              parent="contacts.menu_localisation" sequence="10"/>
 </odoo>
