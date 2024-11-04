@@ -22,7 +22,9 @@ class ResPartner(models.Model):
             verified_record = verified_email_model.search([('email', '=', record.email)], limit=1)
             if verified_record:
                 record.is_email_verified = verified_record.verification_status == 'valid'
-                continue
+                if verified_record.verification_status == 'valid':
+                    continue
+
 
             # Retrieve the API key from the configuration
             API_KEY = self.env['ir.config_parameter'].sudo().get_param('partner_email_verification.neverbounce_api_key')
