@@ -14,7 +14,7 @@
     "author": "Victor Serrano",
     "website": "https://victor.lat",
     'category': 'Accounting/Accounting',
-    'version': '16.0.0.1',
+    'version': '18.0.0.1',
     'depends': ['base'],
     'data': [
         'views/res_partner_view.xml',
