@@ -17,6 +17,7 @@
     'version': '16.0.0.1',
     'depends': ['base', 'base_setup'],
     'data': [
+        'security/ir.model.access.csv',
         'views/res_partner_view.xml',
         'views/res_config_settings_view.xml',
     ],
