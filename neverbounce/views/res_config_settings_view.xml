@@ -4,12 +4,12 @@
         <field name="name">res.config.settings.inherit.partner_email_verification</field>
         <field name="model">res.config.settings</field>
         <field name="priority" eval="5"/>
-        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <div id="integration" position="inside">
-                <div class="col-12 col-lg-6 o_setting_box" id="neverbounce_api_key_setting">
+                <div class="col-12 col-lg-6 o_setting_box" id="neverbounce">
                     <div class="o_setting_left_pane">
-                        <field name="neverbounce_api_key"/>
+                        <field name="neverbounce"/>
                     </div>
                     <div class="o_setting_right_pane">
                         <label string="NeverBounce API KEY" for="neverbounce_api_key"/>
@@ -17,8 +17,8 @@
                         <div class="text-muted">
                             NeverBounce API Integration
                         </div>
-                        <div class="content-group" attrs="{'invisible': [('neverbounce_api_key', '=', False)]}"
-                             id="msg_neverbounce_api_key">
+                        <div class="content-group" attrs="{'invisible': [('neverbounce', '=', False)]}"
+                             id="msg_neverbounce">
                             <div class="text-warning mt16">
                                 <strong>Save</strong>
                                 this page and come back here to set up the feature.

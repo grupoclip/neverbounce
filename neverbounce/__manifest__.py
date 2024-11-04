@@ -15,7 +15,7 @@
     "website": "https://victor.lat",
     'category': 'Accounting/Accounting',
     'version': '16.0.0.1',
-    'depends': ['base'],
+    'depends': ['base', 'base_setup'],
     'data': [
         'views/res_partner_view.xml',
         'views/res_config_settings_view.xml',
