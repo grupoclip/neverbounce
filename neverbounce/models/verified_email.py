@@ -5,7 +5,7 @@ class VerifiedEmail(models.Model):
     _name = 'verified.email'
     _description = 'Verified Email'
 
-    email = fields.Char(required=True, unique=True)
+    email = fields.Char(required=True)
     verification_status = fields.Selection(
         [('valid', 'Valid'), ('invalid', 'Invalid'), ('unknown', 'Unknown')],
         required=True
@@ -16,3 +16,6 @@ class VerifiedEmail(models.Model):
     retry_token = fields.Char(string='Retry Token')
     execution_time = fields.Integer(string='Execution Time (ms)')
     user_id = fields.Many2one('res.users', string='User', default=lambda self: self.env.user)
+    _SQL_CONSTRAINTS = [
+        ('email_uniq', 'unique(email)', 'Email already verified')
+    ]

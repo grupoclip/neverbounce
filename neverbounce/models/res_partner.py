@@ -58,6 +58,7 @@ class ResPartner(models.Model):
                     verification_status = 'invalid'
 
                 # Save verification status with additional fields
+                verified_email_model.search([('email', '=', record.email)]).unlink()
                 verified_email_model.create({
                     'email': record.email,
                     'verification_status': verification_status,
