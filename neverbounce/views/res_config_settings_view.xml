@@ -23,6 +23,10 @@
                                 <label for="neverbounce_api_key" class="col-3 o_light_label"/>
                                 <field name="neverbounce_api_key"/>
                             </div>
+                            <div class="mt16 row">
+                                <label for="neverbounce_version" class="col-3 o_light_label"/>
+                                <field name="neverbounce_version"/>
+                            </div>
                             <div>
                                 <a href="https://app.neverbounce.com/apps" class="oe_link" target="_blank">
                                     <i class="fa fa-arrow-right"/>

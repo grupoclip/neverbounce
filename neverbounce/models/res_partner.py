@@ -3,12 +3,9 @@ from odoo import fields, models, _
 from odoo.exceptions import UserError
 
 API_BASEURL = 'https://api.neverbounce.com/'
-API_VERSION = 'v4.2'
 
-API_URL = f'{API_BASEURL}{API_VERSION}'
-
-API_ENDPOINT_SINGLE_CHECK = f'{API_URL}/single/check'
-API_ENDPOINT_ACCOUNT_INFO = f'{API_URL}/account/info'
+API_ENDPOINT_SINGLE_CHECK = f'/single/check'
+API_ENDPOINT_ACCOUNT_INFO = f'/account/info'
 
 
 class ResPartner(models.Model):
@@ -28,41 +25,46 @@ class ResPartner(models.Model):
                     continue
 
             # Retrieve the API key from the configuration
-            API_KEY = self.env['ir.config_parameter'].sudo().get_param('partner_email_verification.neverbounce_api_key')
             neverbounce = self.env['ir.config_parameter'].sudo().get_param('partner_email_verification.neverbounce')
+            neverbounce_api_key = self.env['ir.config_parameter'].sudo().get_param(
+                'partner_email_verification.neverbounce_api_key')
+            neverbounce_version = self.env['ir.config_parameter'].sudo().get_param(
+                'partner_email_verification.neverbounce_version')
             if not neverbounce:
                 raise UserError(_("Please enable the NeverBounce Integration in the settings."))
-            if not API_KEY:
+            if not neverbounce_api_key:
                 raise UserError(_("Please configure the NeverBounce API Key in the settings."))
 
-            auth = requests.get(f'{API_ENDPOINT_ACCOUNT_INFO}?key={API_KEY}')
-            if auth.status_code == 200:
-                auth_data = auth.json()
-                if auth_data.get('status') == 'auth_failure':
+            account_info = requests.get(
+                f'{API_BASEURL}{neverbounce_version}{API_ENDPOINT_ACCOUNT_INFO}{neverbounce_version}?key={neverbounce_api_key}')
+            if account_info.status_code == 200:
+                account_info_data = account_info.json()
+                if account_info_data.get('status') == 'auth_failure':
                     raise UserError(_("Invalid API Key - Authentication Failure"))
             else:
                 raise UserError(_("Invalid API Key - Unknown Error"))
 
             # Call the NeverBounce API
-            response = requests.get(f'{API_ENDPOINT_SINGLE_CHECK}?key={API_KEY}&email={record.email}')
+            single_check = requests.get(
+                f'{API_BASEURL}{neverbounce_version}{API_ENDPOINT_SINGLE_CHECK}?key={neverbounce_api_key}&email={record.email}')
 
-            if response.status_code == 200:
-                data = response.json()
+            if single_check.status_code == 200:
+                single_check_data = single_check.json()
                 verification_status = 'unknown'
 
-                if data.get('result') == 'valid':
+                if single_check_data.get('result') == 'valid':
                     verification_status = 'valid'
-                elif data.get('result') == 'invalid':
+                elif single_check_data.get('result') == 'invalid':
                     verification_status = 'invalid'
 
                 # Save verification status with additional fields
                 verified_email_model.create({
                     'email': record.email,
                     'verification_status': verification_status,
-                    'flags': ', '.join(data.get('flags', [])),
-                    'suggested_correction': data.get('suggested_correction', ''),
-                    'retry_token': data.get('retry_token', ''),
-                    'execution_time': data.get('execution_time', 0),
+                    'flags': ', '.join(single_check_data.get('flags', [])),
+                    'suggested_correction': single_check_data.get('suggested_correction', ''),
+                    'retry_token': single_check_data.get('retry_token', ''),
+                    'execution_time': single_check_data.get('execution_time', 0),
                 })
 
                 # Update the partner based on new verification status
