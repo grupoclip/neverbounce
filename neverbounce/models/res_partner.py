@@ -29,14 +29,14 @@ class ResPartner(models.Model):
             neverbounce_api_key = self.env['ir.config_parameter'].sudo().get_param(
                 'partner_email_verification.neverbounce_api_key')
             neverbounce_version = self.env['ir.config_parameter'].sudo().get_param(
-                'partner_email_verification.neverbounce_version')
+                'partner_email_verification.neverbounce_version') or 'v4.2'
             if not neverbounce:
                 raise UserError(_("Please enable the NeverBounce Integration in the settings."))
             if not neverbounce_api_key:
                 raise UserError(_("Please configure the NeverBounce API Key in the settings."))
 
             account_info = requests.get(
-                f'{API_BASEURL}{neverbounce_version}{API_ENDPOINT_ACCOUNT_INFO}{neverbounce_version}?key={neverbounce_api_key}')
+                f'{API_BASEURL}{neverbounce_version}{API_ENDPOINT_ACCOUNT_INFO}?key={neverbounce_api_key}')
             if account_info.status_code == 200:
                 account_info_data = account_info.json()
                 if account_info_data.get('status') == 'auth_failure':
