@@ -6,7 +6,7 @@ class ResConfigSettings(models.TransientModel):
 
     neverbounce_api_key = fields.Char(string='NeverBounce API Key')
     neverbounce = fields.Boolean(string='NeverBounce Integration', default=False)
-    neverbounce_version = fields.char(string='NeverBounce Version', default='v4.2')
+    neverbounce_version = fields.Char(string='NeverBounce Version', default='v4.2')
 
     def set_values(self):
         super(ResConfigSettings, self).set_values()
